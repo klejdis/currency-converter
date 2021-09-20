@@ -1,14 +1,14 @@
-package com.kj.currencyconverter.service;
+package com.kj.currencyconverter.service.clients;
 
 import com.kj.currencyconverter.bean.CurrencyConverterBean;
 import com.kj.currencyconverter.bean.CurrencyDTO;
+import com.kj.currencyconverter.service.clients.ExchangeRateClientInterface;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
-import java.math.BigDecimal;
 import java.util.Map;
 
-public class ExchangeRatesApiClient implements ExchangeRateClientInterface{
+public class ExchangeRatesApiClient implements ExchangeRateClientInterface {
 
 
     public CurrencyConverterBean convert(String from, String to, Double quantity){
