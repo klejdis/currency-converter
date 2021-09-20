@@ -13,16 +13,15 @@ import java.math.BigDecimal;
 public class CurrencyConverterController {
 
     @GetMapping("currency-converter/from/{from}/to/{to}/quantity/{quantity}")
-    public String convert(
+    public CurrencyConverterBean convert(
             @PathVariable String from,
             @PathVariable String to,
-            @PathVariable BigDecimal quantity
+            @PathVariable Double quantity
     ){
 
         ExchangeRatesApiClient exchangeRatesApiClient = new ExchangeRatesApiClient();
         CurrencyConverterService currencyConverterService = new CurrencyConverterService(exchangeRatesApiClient);
-        return  currencyConverterService.convert();
 
-      //  return new CurrencyConverterBean("USD","EUR",BigDecimal.valueOf(20),BigDecimal.valueOf(1),BigDecimal.valueOf(3));
+        return  currencyConverterService.convert(from,to,quantity);
     }
 }

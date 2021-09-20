@@ -1,6 +1,10 @@
 package com.kj.currencyconverter.service;
 
+import com.kj.currencyconverter.bean.CurrencyConverterBean;
+
+import java.math.BigDecimal;
+
 public interface ExchangeRateClientInterface {
 
-    public String convert();
+    public CurrencyConverterBean convert(String from, String to, Double quantity);
 }

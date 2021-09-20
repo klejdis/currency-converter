@@ -1,16 +1,15 @@
 package com.kj.currencyconverter.bean;
 
-import java.math.BigDecimal;
 
 public class CurrencyConverterBean {
 
     private String from;
     private String to;
-    private BigDecimal quantity;
-    private BigDecimal rate;
-    private BigDecimal calculatedAmount;
+    private Double quantity;
+    private Double rate;
+    private Double calculatedAmount;
 
-    public CurrencyConverterBean(String from, String to, BigDecimal quantity, BigDecimal rate, BigDecimal calculatedAmount) {
+    public CurrencyConverterBean(String from, String to, Double quantity, Double rate, Double calculatedAmount) {
         this.from = from;
         this.to = to;
         this.quantity = quantity;
@@ -34,27 +33,27 @@ public class CurrencyConverterBean {
         this.to = to;
     }
 
-    public BigDecimal getQuantity() {
+    public Double getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(BigDecimal quantity) {
+    public void setQuantity(Double quantity) {
         this.quantity = quantity;
     }
 
-    public BigDecimal getRate() {
+    public Double getRate() {
         return rate;
     }
 
-    public void setRate(BigDecimal rate) {
+    public void setRate(Double rate) {
         this.rate = rate;
     }
 
-    public BigDecimal getCalculatedAmount() {
+    public Double getCalculatedAmount() {
         return calculatedAmount;
     }
 
-    public void setCalculatedAmount(BigDecimal calculatedAmount) {
+    public void setCalculatedAmount(Double calculatedAmount) {
         this.calculatedAmount = calculatedAmount;
     }
 }
