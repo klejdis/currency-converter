@@ -1,8 +1,10 @@
-package com.kj.currencyconverter.service;
+package com.kj.currencyconverter.services;
 
 import com.kj.currencyconverter.bean.CurrencyConverterBean;
-import com.kj.currencyconverter.service.clients.ExchangeRateClientInterface;
+import com.kj.currencyconverter.services.clients.ExchangeRateClientInterface;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CurrencyConverterService {
 
     private ExchangeRateClientInterface exchangeRateClient;

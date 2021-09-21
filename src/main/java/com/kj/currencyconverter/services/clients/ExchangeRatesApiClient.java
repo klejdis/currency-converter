@@ -1,8 +1,7 @@
-package com.kj.currencyconverter.service.clients;
+package com.kj.currencyconverter.services.clients;
 
 import com.kj.currencyconverter.bean.CurrencyConverterBean;
 import com.kj.currencyconverter.bean.CurrencyDTO;
-import com.kj.currencyconverter.service.clients.ExchangeRateClientInterface;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
