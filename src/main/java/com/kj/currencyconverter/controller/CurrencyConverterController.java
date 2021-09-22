@@ -5,6 +5,7 @@ import com.kj.currencyconverter.models.Currency;
 import com.kj.currencyconverter.repositories.CurrencyRepository;
 import com.kj.currencyconverter.services.currencyconverter.CurrencyConverterFactory;
 import com.kj.currencyconverter.services.currencyconverter.CurrencyConverterService;
+import com.kj.currencyconverter.services.currencyconverter.exceptions.CurrencyNotFoundException;
 import org.hibernate.validator.constraints.Range;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,15 +31,21 @@ public class CurrencyConverterController {
      * @return CurrencyConverterBean
      */
     @RequestMapping(value = "from/{from}/to/{to}/quantity/{quantity}",produces = {"application/json"}, method = RequestMethod.GET)
-    public ResponseEntity<CurrencyConverterBean> convert(
+    public ResponseEntity<?> convert(
            @NotNull @PathVariable String from,
            @NotNull @PathVariable String to,
            @NotNull @Positive @PathVariable Double quantity
     ) throws Exception {
-        CurrencyConverterService currencyConverterService = currencyConverterFactory.getService();
 
+        try{
+            CurrencyConverterService currencyConverterService = currencyConverterFactory.getService();
+            CurrencyConverterBean currencyConverterBean = currencyConverterService.convert(from,to,quantity);
 
-        return  new ResponseEntity<>( currencyConverterService.convert(from,to,quantity)
-                , HttpStatus.OK);
+            return  new ResponseEntity<>(currencyConverterBean, HttpStatus.OK);
+
+        }catch (CurrencyNotFoundException currencyNotFoundException){
+            return  new ResponseEntity<CurrencyNotFoundException>(currencyNotFoundException, HttpStatus.UNPROCESSABLE_ENTITY);
+        }
+
     }
 }

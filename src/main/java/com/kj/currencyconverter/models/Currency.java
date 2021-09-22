@@ -38,12 +38,4 @@ public class Currency {
     public void setValueInEuros(Double valueInEuros) {
         this.valueInEuros = valueInEuros;
     }
-
-    @Override
-    public String toString() {
-        return "Currency{" +
-                "name='" + name + '\'' +
-                ", valueInEuros=" + valueInEuros +
-                '}';
-    }
 }

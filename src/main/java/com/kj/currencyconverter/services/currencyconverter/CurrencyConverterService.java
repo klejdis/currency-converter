@@ -4,6 +4,7 @@ import com.kj.currencyconverter.bean.CurrencyConverterBean;
 import com.kj.currencyconverter.models.Currency;
 import com.kj.currencyconverter.repositories.CurrencyRepository;
 import com.kj.currencyconverter.services.currencyconverter.clients.ExchangeRateClientInterface;
+import com.kj.currencyconverter.services.currencyconverter.exceptions.CurrencyNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Optional;
@@ -51,13 +52,13 @@ public class CurrencyConverterService {
      * @param quantity
      * @return CurrencyConverterBean
      */
-    public CurrencyConverterBean convert(String from, String to, Double quantity){
+    public CurrencyConverterBean convert(String from, String to, Double quantity) throws CurrencyNotFoundException {
 
         Optional<Currency> toOptional = this.currencyRepository.findById(to.toUpperCase());
         Optional<Currency> fromOptional = this.currencyRepository.findById(from.toUpperCase());
 
         if(!toOptional.isPresent() && !fromOptional.isPresent()) {
-
+            throw new CurrencyNotFoundException("Currency Not Found");
         }
 
         Currency toCurrency = toOptional.get();
