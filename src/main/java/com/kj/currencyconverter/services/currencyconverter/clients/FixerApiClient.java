@@ -1,9 +1,7 @@
-package com.kj.currencyconverter.services.clients;
+package com.kj.currencyconverter.services.currencyconverter.clients;
 
 import com.kj.currencyconverter.bean.CurrencyConverterBean;
 import com.kj.currencyconverter.bean.CurrencyDTO;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 

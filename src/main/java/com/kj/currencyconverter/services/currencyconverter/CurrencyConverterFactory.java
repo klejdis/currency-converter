@@ -1,9 +1,10 @@
-package com.kj.currencyconverter.services;
+package com.kj.currencyconverter.services.currencyconverter;
 
-import com.kj.currencyconverter.services.clients.ExchangeRateClientInterface;
-import com.kj.currencyconverter.services.clients.ExchangeRatesApiClient;
-import com.kj.currencyconverter.services.clients.FixerApiClient;
-import com.kj.currencyconverter.services.exceptions.RateProviderNotSupportedException;
+import com.kj.currencyconverter.repositories.CurrencyRepository;
+import com.kj.currencyconverter.services.currencyconverter.clients.ExchangeRateClientInterface;
+import com.kj.currencyconverter.services.currencyconverter.clients.ExchangeRatesApiClient;
+import com.kj.currencyconverter.services.currencyconverter.clients.FixerApiClient;
+import com.kj.currencyconverter.services.currencyconverter.exceptions.RateProviderNotSupportedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,9 @@ public class CurrencyConverterFactory {
     @Autowired
     public Environment env;
 
+    @Autowired
+    private CurrencyRepository currencyRepository;
+
     public CurrencyConverterService getService() throws Exception {
 
         String provider =  env.getProperty("spring.rates.provider");
@@ -29,7 +33,7 @@ public class CurrencyConverterFactory {
             throw new RateProviderNotSupportedException("Rate Provider "+ provider +" Not Supported");
         }
 
-        this.currencyConverterService = new CurrencyConverterService(exchangeRatesApiClient);
+        this.currencyConverterService = new CurrencyConverterService(exchangeRatesApiClient, currencyRepository);
 
         return this.currencyConverterService;
     }

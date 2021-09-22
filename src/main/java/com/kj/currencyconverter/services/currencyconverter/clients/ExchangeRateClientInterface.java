@@ -1,4 +1,4 @@
-package com.kj.currencyconverter.services.clients;
+package com.kj.currencyconverter.services.currencyconverter.clients;
 
 import com.kj.currencyconverter.bean.CurrencyConverterBean;
 import com.kj.currencyconverter.bean.CurrencyDTO;

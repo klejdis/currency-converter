@@ -1,4 +1,4 @@
-package com.kj.currencyconverter.services.exceptions;
+package com.kj.currencyconverter.services.currencyconverter.exceptions;
 
 public class RateNullException extends Exception{
     public RateNullException() {

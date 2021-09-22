@@ -1,4 +1,4 @@
-package com.kj.currencyconverter.services.exceptions;
+package com.kj.currencyconverter.services.currencyconverter.exceptions;
 
 public class RateProviderNotSupportedException extends Exception{
     public RateProviderNotSupportedException() {
