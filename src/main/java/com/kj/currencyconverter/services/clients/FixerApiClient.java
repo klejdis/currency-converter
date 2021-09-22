@@ -3,18 +3,15 @@ package com.kj.currencyconverter.services.clients;
 import com.kj.currencyconverter.bean.CurrencyConverterBean;
 import com.kj.currencyconverter.bean.CurrencyDTO;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Primary;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Locale;
 import java.util.Map;
 
-public class ExchangeRatesApiClient extends ExchangeClientBaseClass {
+public class FixerApiClient extends ExchangeClientBaseClass {
 
-    public ExchangeRatesApiClient(String uri) {
+    public FixerApiClient(String uri) {
         super(uri);
     }
 
@@ -45,20 +42,12 @@ public class ExchangeRatesApiClient extends ExchangeClientBaseClass {
     public CurrencyDTO getRates() {
         try {
             RestTemplate restTemplate = new RestTemplate();
-            return restTemplate.getForObject(uri,
+            return restTemplate.getForObject(this.uri,
                     CurrencyDTO.class);
         } catch (RestClientException ex){
             System.out.println(ex.getMessage());
         }
 
         return null;
-    }
-
-    public String getUri() {
-        return uri;
-    }
-
-    public void setUri(String uri) {
-        this.uri = uri;
     }
 }

@@ -8,4 +8,5 @@ public interface ExchangeRateClientInterface {
     public CurrencyConverterBean convert(String from, String to, Double quantity);
 
     public CurrencyDTO getRates();
+
 }

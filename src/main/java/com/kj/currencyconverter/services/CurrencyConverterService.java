@@ -2,19 +2,20 @@ package com.kj.currencyconverter.services;
 
 import com.kj.currencyconverter.bean.CurrencyConverterBean;
 import com.kj.currencyconverter.services.clients.ExchangeRateClientInterface;
-import org.springframework.stereotype.Service;
 
-@Service
 public class CurrencyConverterService {
 
     private ExchangeRateClientInterface exchangeRateClient;
 
+    public CurrencyConverterService() {
+    }
+
     /**
      * Constructor for CurrencyConverterService
      * it takes ExchangeRateClientInterface as param and any client that implements this interface
-     * can be accepted this way thic class is open for extension
+     * can be accepted. This way this class is open for extension
      *
-     * @param exchangeRateClient
+     * @param
      */
     public CurrencyConverterService(ExchangeRateClientInterface exchangeRateClient) {
         this.exchangeRateClient = exchangeRateClient;
@@ -27,7 +28,7 @@ public class CurrencyConverterService {
      * @param from
      * @param to
      * @param quantity
-     * @return
+     * @return CurrencyConverterBean
      */
     public CurrencyConverterBean convert(String from, String to, Double quantity){
        return this.exchangeRateClient.convert(from,to,quantity);

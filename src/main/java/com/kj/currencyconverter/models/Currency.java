@@ -3,12 +3,17 @@ package com.kj.currencyconverter.models;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 
+import javax.validation.constraints.NotBlank;
+
 @RedisHash("Currency")
 public class Currency {
-    @Id
-    private String name;
-    private Double valueInEuros;
 
+    @Id
+    @NotBlank(message = "Name is mandatory")
+    private String name;
+
+    @NotBlank(message = "value In Euros is mandatory")
+    private Double valueInEuros;
 
     public Currency() {
     }
@@ -32,5 +37,13 @@ public class Currency {
 
     public void setValueInEuros(Double valueInEuros) {
         this.valueInEuros = valueInEuros;
+    }
+
+    @Override
+    public String toString() {
+        return "Currency{" +
+                "name='" + name + '\'' +
+                ", valueInEuros=" + valueInEuros +
+                '}';
     }
 }
