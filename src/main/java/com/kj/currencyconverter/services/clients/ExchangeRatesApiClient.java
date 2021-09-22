@@ -2,14 +2,8 @@ package com.kj.currencyconverter.services.clients;
 
 import com.kj.currencyconverter.bean.CurrencyConverterBean;
 import com.kj.currencyconverter.bean.CurrencyDTO;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Primary;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.Locale;
 import java.util.Map;
 
 public class ExchangeRatesApiClient extends ExchangeClientBaseClass {
