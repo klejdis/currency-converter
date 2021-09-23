@@ -6,7 +6,7 @@ I have created the CurrencyConverterService which through the endpoint:http://lo
 eg: http://localhost:8080/currency-converter/from/eur/to/usd/quantity/33
 ![img.png](img.png)  
 
-##Requirements that i have met
+## Requirements that i have met
 - service gets the data from configured "backing service" , for the moment fixer and
   exchangeratesapi is supported. A task that runs every 5h is fetching the rates and 
   saves them on Redis
