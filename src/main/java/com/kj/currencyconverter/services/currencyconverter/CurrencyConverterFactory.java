@@ -9,10 +9,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
+/**
+ * This class is responsible for initializing the CurrencyConverterService
+ * and giving it the right client that is configured in aplication.properties
+ *
+ */
 @Service
 public class CurrencyConverterFactory {
 
     private CurrencyConverterService currencyConverterService;
+
     private ExchangeRateClientInterface exchangeRatesApiClient;
 
     @Autowired

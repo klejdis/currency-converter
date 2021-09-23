@@ -1,19 +1,15 @@
 package com.kj.currencyconverter.controller;
 
 import com.kj.currencyconverter.bean.CurrencyConverterBean;
-import com.kj.currencyconverter.models.Currency;
-import com.kj.currencyconverter.repositories.CurrencyRepository;
 import com.kj.currencyconverter.services.currencyconverter.CurrencyConverterFactory;
 import com.kj.currencyconverter.services.currencyconverter.CurrencyConverterService;
 import com.kj.currencyconverter.services.currencyconverter.exceptions.CurrencyNotFoundException;
-import org.hibernate.validator.constraints.Range;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("currency-converter/")

@@ -31,7 +31,6 @@ public class CurrencyConverterServiceTest {
     }
 
 
-
     @Test
     public void convert() {
 
@@ -57,18 +56,6 @@ public class CurrencyConverterServiceTest {
 
     }
 
-    @Test(expected = CurrencyNotFoundException.class)
-    public void convertTestCurrencyNotFoundException() throws CurrencyNotFoundException {
-
-        Mockito.when(currencyRepository.findById("EURO")).thenReturn(null);
-        Mockito.when(currencyRepository.findById("USD")).thenReturn(null);
-
-        CurrencyConverterBean currencyConverterBean = null;
-
-        currencyConverterBean = currencyConverterService.convert("EURO","USD", 100.0);
-
-    }
-
     @Test(expected = NullPointerException.class)
     public void convertTestNullPointerException() throws NullPointerException, CurrencyNotFoundException {
 
@@ -78,6 +65,5 @@ public class CurrencyConverterServiceTest {
         CurrencyConverterBean currencyConverterBean = null;
 
         currencyConverterBean = currencyConverterService.convert("EURO","USD", 100.0);
-
     }
 }
