@@ -9,6 +9,9 @@ public class CurrencyConverterBean {
     private Double rate;
     private Double calculatedAmount;
 
+    public CurrencyConverterBean() {
+    }
+
     public CurrencyConverterBean(String from, String to, Double quantity, Double rate, Double calculatedAmount) {
         this.from = from;
         this.to = to;

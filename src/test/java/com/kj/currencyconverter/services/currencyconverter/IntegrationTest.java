@@ -1,6 +1,7 @@
 package com.kj.currencyconverter.services.currencyconverter;
 
 import com.kj.currencyconverter.bean.CurrencyConverterBean;
+import com.kj.currencyconverter.controller.CurrencyConverterController;
 import com.kj.currencyconverter.models.Currency;
 import com.kj.currencyconverter.repositories.CurrencyRepository;
 import org.junit.Assert;
@@ -10,6 +11,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.TestPropertySource;
@@ -23,13 +25,14 @@ import java.util.Optional;
 @TestPropertySource("classpath:application.properties")
 public class IntegrationTest {
 
-    @Mock
+    private CurrencyConverterController currencyConverterController;
+
+    @MockBean
     private CurrencyRepository currencyRepository;
 
     private RestTemplate restTemplate;
 
     private String basePath = "http://localhost:8080/currency-converter/";
-
 
     @Before
     public void setUp(){
@@ -44,10 +47,9 @@ public class IntegrationTest {
         Mockito.when(currencyRepository.findById("EUR")).thenReturn(eur);
         Mockito.when(currencyRepository.findById("USD")).thenReturn(usd);
 
-
         CurrencyConverterBean converterBeanResponseEntity = restTemplate.getForObject(basePath+"/from/EUR/to/USD/quantity/100",CurrencyConverterBean.class);
 
-        //Assert.assertEquals(converterBeanResponseEntity.getStatusCode(), HttpStatus.OK);
+        Assert.assertEquals(converterBeanResponseEntity.getCalculatedAmount() , Double.valueOf(117));
 
     }
 
